@@ -12,10 +12,21 @@ class ExpensesApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(),
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        accentColor: Colors.amber
-      ),
-      );
+          primarySwatch: Colors.purple,
+          accentColor: Colors.amber,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold)),
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)))),
+    );
   }
 }
 
@@ -25,19 +36,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo tênis de corrida',
-      value: 310.76,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de luz',
-      value: 211.30,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    //   Transaction(
+    //     id: 't1',
+    //     title: 'Novo tênis de corrida',
+    //     value: 310.76,
+    //     date: DateTime.now(),
+    //   ),
+    //   Transaction(
+    //     id: 't2',
+    //     title: 'Conta de luz',
+    //     value: 211.30,
+    //     date: DateTime.now(),
+    //   ),
   ];
 
   _addTransaction(String title, double value) {
@@ -80,14 +91,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child:
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text('Gráfico'),
-                elevation: 5,
-              ),
+            width: double.infinity,
+            child: Card(
+              color: Colors.blue,
+              child: Text('Gráfico'),
+              elevation: 5,
             ),
-            TransactionList(_transactions),          
+          ),
+          TransactionList(_transactions),
         ]),
       ),
       floatingActionButton: FloatingActionButton(
