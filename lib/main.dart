@@ -1,5 +1,6 @@
 import 'package:expenses/components/transaction_form.dart';
 import 'package:flutter/material.dart';
+import 'components/chart.dart';
 import 'models/transaction.dart';
 import 'dart:math';
 import 'package:expenses/components/transaction_list.dart';
@@ -37,19 +38,52 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
-    //   Transaction(
-    //     id: 't1',
-    //     title: 'Novo tênis de corrida',
-    //     value: 310.76,
-    //     date: DateTime.now(),
-    //   ),
-    //   Transaction(
-    //     id: 't2',
-    //     title: 'Conta de luz',
-    //     value: 211.30,
-    //     date: DateTime.now(),
-    //   ),
+      Transaction(
+        id: 't1',
+        title: 'Novo tênis de corrida',
+        value: 310.76,
+        date: DateTime.now().subtract(Duration(days: 1)),
+      ),
+      Transaction(
+        id: 't2',
+        title: 'Conta de luz',
+        value: 20.30,
+        date: DateTime.now().subtract(Duration(days: 2)),
+      ),
+      Transaction(
+        id: 't3',
+        title: 'Conta de internet',
+        value: 89.90,
+        date: DateTime.now().subtract(Duration(days: 3)),
+      ),
+      Transaction(
+        id: 't4',
+        title: 'Alimentação',
+        value: 410.30,
+        date: DateTime.now().subtract(Duration(days: 4)),
+      ),
+      Transaction(
+        id: 't5',
+        title: 'Aluguel',
+        value: 1000.00,
+        date: DateTime.now().subtract(Duration(days: 5)),
+      ),
+      Transaction(
+        id: 't6',
+        title: 'Fatura cartão',
+        value: 650.30,
+        date: DateTime.now().subtract(Duration(days: 6)),
+      ),
+
   ];
+
+  List<Transaction> get _recentTransactions{
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -92,11 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Container(
             width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text('Gráfico'),
-              elevation: 5,
-            ),
+            child: Chart(_recentTransactions),
           ),
           TransactionList(_transactions),
         ]),
