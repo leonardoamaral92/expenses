@@ -1,15 +1,27 @@
-# expenses
+# Expenses
 
-A new Flutter project.
+A Personal Expenses project done in Flutter.
+Functionalities:
+- Add a transaction (expense)
+        - Title, Value and Date
+- Remove transaction from list
+- Show a graph with weekly expenses
+        - Calculates the percentage of weekly spend per day of the week
 
-## Getting Started
+## Objective
 
-This project is a starting point for a Flutter application.
+This is a study project whose focus is to train and get to know the main concepts and widgets of Flutter developing a publishable application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Concepts and widgets that this application contains:
+- Stateful Widgets vs Stateless Widgets
+- Colum, Row, Container
+- Apply style to Container, Text and Theme
+- Using images and external text fonts
+- Inputs: Buttons, TextField, Numeric Keypad and DatePicker
+- Widgets: ListView, ListTile, Card, SizedBox, CircleAvatar, Icon, Padding, FractionallySizedBox, BoxDecoration, SingleChildScrollView, AppBar and Custom Widgets
+- FlexBox: Flexible and Expanded
+- Direct and indirect communication between widgets
+- Working with Modal
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
